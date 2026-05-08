@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasks</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    display:flex;
+    height:100vh;
+}
+
+.sidebar{
+    width:220px;
+    background:#1d232c;
+    padding:30px 20px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin-bottom:10px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.sidebar ul li:hover{
+    background:#9344b2;
+}
+
+.sidebar ul li a{
+    text-decoration:none;
+    color:white;
+    display:block;
+    padding:14px 10px;
+}
+
+.sidebar ul li a:visited{
+    color:white;
+}
+
+.main{
+    flex:1;
+    padding:25px;
+}
+
+.title{
+    background:#afa6b5;
+    color:white;
+    display:inline-block;
+    padding:10px 20px;
+    border-radius:12px;
+    margin-bottom:25px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+.card h2{
+    margin-bottom:20px;
+    color:#222;
+}
+
+.activity{
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+.deadline{
+    color:gray;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#16c2e5;
+    cursor:pointer;
+    font-size:14px;
+}
+
+button:hover{
+    opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="virtualnotebooks.html">Virtual Notebooks</a></li>
+        <li><a href="tasks.html">Tasks</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="index.html">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main">
+
+    <div class="title">TASKS</div>
+
+    <div class="card-container">
+
+        <div class="card">
+            <h2>Mathematics</h2>
+            <div class="activity">Quiz 2</div>
+            <div class="deadline">Deadline: May 13, 2026 at 10:00 A.M.</div>
+            <button>Take this activity</button>
+        </div>
+
+        <div class="card">
+            <h2>Science</h2>
+            <div class="activity">Lab Activity 3</div>
+            <div class="deadline">Deadline: May 12, 2026 at 11:00 A.M.</div>
+            <button>Take this activity</button>
+        </div>
+
+        <div class="card">
+            <h2>ICT</h2>
+            <div class="activity">Quarter Project</div>
+            <div class="deadline">Deadline: May 8, 2026 at 2:30 P.M.</div>
+            <button>Submit</button>
+        </div>
+
+        <div class="card">
+            <h2>VE</h2>
+            <div class="activity">Film Critique</div>
+            <div class="deadline">Deadline: May 11, 2026 at 8:00 A.M.</div>
+            <button>Submit</button>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

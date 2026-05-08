@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Activity</title>
+
+    <style>
+        :root {
+            --bg: #e8eff7;
+            --panel: #0f224d;
+            --accent: #4f7cff;
+            --text: #17213d;
+            --muted: #64739a;
+            --card: #ffffff;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at top left, rgba(79, 124, 255, 0.18), transparent 28%),
+                        linear-gradient(180deg, #f4f7fb 0%, #e5ecf7 100%);
+            color: var(--text);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px;
+        }
+
+        .app {
+            width: min(1200px, 100%);
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            gap: 24px;
+        }
+
+        .sidebar {
+            background: var(--panel);
+            color: #fff;
+            border-radius: 30px;
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 560px;
+            box-shadow: 0 24px 60px rgba(15, 34, 77, 0.18);
+        }
+
+        .sidebar .brand {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            letter-spacing: -0.03em;
+        }
+
+        .menu {
+            display: grid;
+            gap: 14px;
+        }
+
+        .menu a {
+            display: inline-flex;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 14px 18px;
+            border-radius: 16px;
+            transition: background 0.25s ease, color 0.25s ease;
+            font-weight: 600;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255, 255, 255, 0.09);
+            color: #fff;
+        }
+
+        .sidebar-footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .hero {
+            background: var(--card);
+            border-radius: 32px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 34, 77, 0.08);
+        }
+
+        .hero h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 3vw, 4rem);
+            line-height: 1.02;
+            letter-spacing: -0.06em;
+        }
+
+        .hero p {
+            margin: 18px 0 0;
+            color: var(--muted);
+            font-size: 1rem;
+            max-width: 620px;
+            line-height: 1.7;
+        }
+
+        .form-card {
+            background: var(--card);
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(15, 34, 77, 0.08);
+        }
+
+        .form-card h2 {
+            margin: 0 0 24px;
+            font-size: 1.75rem;
+            color: var(--text);
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            border: 1px solid rgba(15, 34, 77, 0.12);
+            background: #f8faff;
+            border-radius: 16px;
+            padding: 16px 18px;
+            width: 100%;
+            font-size: 1rem;
+            color: var(--text);
+            transition: border 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(79, 124, 255, 0.12);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .checkbox-row input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+        }
+
+        .checkbox-row label {
+            font-size: 0.95rem;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        button[type="submit"],
+        input[type="reset"] {
+            flex: 1;
+            min-width: 150px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        button[type="submit"] {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        button[type="submit"]:hover,
+        input[type="reset"]:hover {
+            transform: translateY(-1px);
+        }
+
+        input[type="reset"] {
+            background: #f1f5ff;
+            color: var(--text);
+        }
+
+        .notification {
+            min-height: 24px;
+            color: #d04545;
+            font-size: 0.95rem;
+            margin-top: 14px;
+        }
+
+        .forgot {
+            text-align: center;
+            margin-top: 18px;
+        }
+
+        .forgot a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 900px) {
+            .app {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 18px;
+            }
+
+            .hero,
+            .form-card {
+                padding: 28px 22px;
+            }
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="app">
+        <aside class="sidebar">
+            <div>
+                <div class="brand">Dashboard Menu</div>
+                <nav class="menu">
+                    <a class="active" href="#">Dashboard</a>
+                    <a href="#">Class List</a>
+                    <a href="#">Tasks</a>
+                    <a href="#">Profile</a>
+                    <a href="#">Log Out</a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <strong>I.C.T.</strong><br>
+                9-Sapphire 2025-2026<br>
+                Ms. Caballero
+            </div>
+        </aside>
+        <section class="content">
+            <div class="hero">
+                <h1>Information and Communications Technology</h1>
+                <p>A modern login experience inspired by an intuitive dashboard layout. Enter your credentials to continue to your curriculum and classroom tools.</p>
+            </div>
+            <div class="form-card">
+                <h2>Sign in to your account</h2>
+                <form onsubmit="authenticate(event)" id="loginForm">
+                    <div class="field">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" required placeholder="Enter username">
+                    </div>
+                    <div class="field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required placeholder="Enter password">
+                    </div>
+                    <div class="checkbox-row">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Stay Logged In</label>
+                    </div>
+                    <div class="actions">
+                        <button type="submit">Login</button>
+                        <input type="reset" value="Cancel">
+                    </div>
+                    <div class="notification" id="InvalidAttempt"></div>
+                    <p class="forgot"><a href="#">Forgot username / password?</a></p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        let attemptCount = 0;
+        const maxAttempts = 3;
+
+        function authenticate(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById("InvalidAttempt");
+            const button = document.querySelector('#loginForm button[type="submit"]');
+
+            if (button.disabled) return;
+
+            if (username === 'janedoe' && password === '1234') {
+                alert("Welcome " + username + "!");
+                attemptCount = 0;
+                message.textContent = "";
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            attemptCount++;
+            message.textContent = `Incorrect username and/or password. Attempt ${attemptCount} of ${maxAttempts}.`;
+
+            if (attemptCount >= maxAttempts) {
+                button.disabled = true;
+                message.textContent = "Too many failed attempts. Try again in 3 seconds.";
+
+                setTimeout(function () {
+                    attemptCount = 0;
+                    button.disabled = false;
+                    message.textContent = "";
+                }, 3000);
+            }
+        }
+    </script>
+
+
+</body>
+</html>
